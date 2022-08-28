@@ -4,19 +4,20 @@ import json
 import requests
 import yara
 import base64
+import psutil
 from Crypto.Cipher import AES
 
-
 class WindowsCommands:
+    @staticmethod
     def delete_keys():
         x = 1
-
+    @staticmethod
     def delete_service():
         x = 2
-
+    @staticmethod
     def delete_files():
         x = 3
-
+    @staticmethod
     def uninstall_program():
         x = 4
 
@@ -30,15 +31,15 @@ class GetAndParseData:
 
         if self.operating_system == "Darwin":
             # Get encrypted Darwin Rule List
-            encrypted_list = GetAndParseData.retrieve_list(self.operating_system, self.key)
+            encrypted_list = GetAndParseData.retrieve_list(self.operating_system, self.client_key)
 
         elif self.operating_system == "Linux":
             # Get encrypted Linux Rule List
-            encrypted_list = GetAndParseData.retrieve_list(self.operating_system, self.key)
+            encrypted_list = GetAndParseData.retrieve_list(self.operating_system, self.client_key)
 
         elif self.operating_system == "Windows":
             # Get encrypted Windows Rule List
-            encrypted_list = GetAndParseData.retrieve_list(self.operating_system, self.key)
+            encrypted_list = GetAndParseData.retrieve_list(self.operating_system, self.client_key)
 
         #Save Encrypted List to File
         #to be done.
@@ -56,7 +57,16 @@ class GetAndParseData:
     @staticmethod
     def retrieve_list(operating_system, key):
         # Retrieves OS specific general remediation JSON.
-        remediation_list = requests.get("https://google.com/", data=operating_system, cookies=key)
+        remediation_list = requests.get("http://google.com/", params = {"platform" : operating_system})
+        trial = 0
+        try:
+            print(remediation_list.content.decode("utf-8").startswith("eSentire"))
+        except:
+            print("Error gathering file contents. Please try again.")
+            trial = 1
+        finally:
+            if trial == 1:
+                exit(0)
         return remediation_list
 
     @staticmethod
