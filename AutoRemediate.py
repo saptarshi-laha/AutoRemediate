@@ -5,18 +5,59 @@ import requests
 import yara
 import base64
 import psutil
+import hashlib
 from Crypto.Cipher import AES
+
 
 class WindowsCommands:
     @staticmethod
     def delete_keys():
         x = 1
+
     @staticmethod
     def delete_service():
         x = 2
+
     @staticmethod
     def delete_files():
         x = 3
+
+    @staticmethod
+    def uninstall_program():
+        x = 4
+
+
+class LinuxCommands:
+    @staticmethod
+    def delete_keys():
+        x = 1
+
+    @staticmethod
+    def delete_service():
+        x = 2
+
+    @staticmethod
+    def delete_files():
+        x = 3
+
+    @staticmethod
+    def uninstall_program():
+        x = 4
+
+
+class DarwinCommands:
+    @staticmethod
+    def delete_keys():
+        x = 1
+
+    @staticmethod
+    def delete_service():
+        x = 2
+
+    @staticmethod
+    def delete_files():
+        x = 3
+
     @staticmethod
     def uninstall_program():
         x = 4
@@ -41,8 +82,8 @@ class GetAndParseData:
             # Get encrypted Windows Rule List
             encrypted_list = GetAndParseData.retrieve_list(self.operating_system, self.client_key)
 
-        #Save Encrypted List to File
-        #to be done.
+        # Save Encrypted List to File - ideally not.
+        # to be done.
         # Get Decrypted JSON List
         json_list = GetAndParseData.aes_decrypt(encrypted_list)
         # Parse JSON Data for Rules
@@ -57,17 +98,28 @@ class GetAndParseData:
     @staticmethod
     def retrieve_list(operating_system, key):
         # Retrieves OS specific general remediation JSON.
-        remediation_list = requests.get("http://google.com/", params = {"platform" : operating_system})
+        remediation_list = requests.get("http://localhost:1234/", params={"platform": operating_system})
+        # Set Fail Variable to 0
         trial = 0
         try:
-            print(remediation_list.content.decode("utf-8").startswith("eSentire"))
+            # Try Parsing Correct Data
+            correct_content = remediation_list.content.decode("utf-8").startswith("eSentire")
+            # Remediation List doesn't Start with eSentire
+            if correct_content is False:
+                # Set Failure Condition to 1
+                trial = 1
         except:
+            # Failure to Parse Correct Data
             print("Error gathering file contents. Please try again.")
+            # Set Failure Condition to 1
             trial = 1
         finally:
+            # If Failed to Parse Data
             if trial == 1:
+                # Exit Program
                 exit(0)
-        return remediation_list
+        # If Parsed Data is Correct, Proceed with the Next Steps
+        return remediation_list.cotent.decode("utf-8")
 
     @staticmethod
     def parse_json(list_json):
@@ -78,7 +130,7 @@ class GetAndParseData:
     @staticmethod
     def aes_decrypt(list_encrypted):
         list_json = base64.b64decode(list_encrypted)
-        #Perform AES Decryption operations here using client key
+        # Perform AES Decryption operations here using client key
 
         return list_json
 
@@ -86,7 +138,8 @@ class GetAndParseData:
 unique_key = "client_key"
 
 if len(sys.argv) == 3:
-    # Used to remediate a specific malware/adware variant.
+    # Used to Remediate a Specific Malware/Adware Variant
     print(4)
 else:
+    # Used to Remediate All Malware based on Full List
     GetAndParseData(unique_key)
