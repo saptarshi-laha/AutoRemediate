@@ -98,34 +98,37 @@ class GetAndParseData:
     @staticmethod
     def retrieve_list(operating_system, key):
         # Retrieves OS specific general remediation JSON.
-        remediation_list = requests.get("http://localhost:1234/", params={"platform": operating_system})
+        remediation_list = requests.get("http://localhost:8888/getSystemList.php", params={"platform": operating_system})
         # Set Fail Variable to 0
         trial = 0
         try:
             # Try Parsing Correct Data
             correct_content = remediation_list.content.decode("utf-8").startswith("eSentire")
+            # Test
+            print(remediation_list.content.decode("utf-8"))
             # Remediation List doesn't Start with eSentire
             if correct_content is False:
                 # Set Failure Condition to 1
                 trial = 1
+                # Failure to Parse Correct Data
+                print("Error parsing file contents. Please try again.")
         except:
-            # Failure to Parse Correct Data
+            # Failure to Get Data
             print("Error gathering file contents. Please try again.")
             # Set Failure Condition to 1
             trial = 1
         finally:
-            # If Failed to Parse Data
+            # If Failed to Get Data
             if trial == 1:
                 # Exit Program
                 exit(0)
         # If Parsed Data is Correct, Proceed with the Next Steps
-        return remediation_list.cotent.decode("utf-8")
+        return remediation_list.content.decode("utf-8")
 
     @staticmethod
     def parse_json(list_json):
         # Parses JSON to identify individual tasks and perform them.
-        for i in list_json:
-            i.find(1)
+        return 0
 
     @staticmethod
     def aes_decrypt(list_encrypted):
