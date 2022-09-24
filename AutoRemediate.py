@@ -104,8 +104,6 @@ class GetAndParseData:
         try:
             # Try Parsing Correct Data
             correct_content = remediation_list.content.decode("utf-8").startswith("eSentire")
-            # Test
-            print(remediation_list.content.decode("utf-8"))
             # Remediation List doesn't Start with eSentire
             if correct_content is False:
                 # Set Failure Condition to 1
@@ -123,7 +121,7 @@ class GetAndParseData:
                 # Exit Program
                 exit(0)
         # If Parsed Data is Correct, Proceed with the Next Steps
-        return remediation_list.content.decode("utf-8")
+        return remediation_list.content.decode("utf-8")[8:]
 
     @staticmethod
     def parse_json(list_json):
@@ -132,9 +130,9 @@ class GetAndParseData:
 
     @staticmethod
     def aes_decrypt(list_encrypted):
-        list_json = base64.b64decode(list_encrypted)
+        list_json = base64.b64decode(list_encrypted).decode('utf-8')
         # Perform AES Decryption operations here using client key
-
+        print(list_json)
         return list_json
 
 
