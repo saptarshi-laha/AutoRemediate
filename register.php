@@ -1,1 +1,3 @@
 <?php
+include "connectionStrings.php";
+
