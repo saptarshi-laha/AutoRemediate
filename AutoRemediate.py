@@ -6,8 +6,6 @@ import yara
 import base64
 import psutil
 import hashlib
-from Crypto.Cipher import AES
-
 
 class WindowsCommands:
     @staticmethod
@@ -97,11 +95,11 @@ class GetAndParseData:
 
     @staticmethod
     def retrieve_list(operating_system, key):
-        # Retrieves OS specific general remediation JSON.
-        remediation_list = requests.get("http://localhost:8888/getSystemList.php", params={"platform": operating_system})
         # Set Fail Variable to 0
         trial = 0
         try:
+            # Retrieves OS specific general remediation JSON.
+            remediation_list = requests.get("http://localhost:8888/getSystemList.php", params={"platform": operating_system})
             # Try Parsing Correct Data
             correct_content = remediation_list.content.decode("utf-8").startswith("eSentire")
             # Remediation List doesn't Start with eSentire
@@ -141,6 +139,11 @@ unique_key = "client_key"
 if len(sys.argv) == 3:
     # Used to Remediate a Specific Malware/Adware Variant
     print(4)
-else:
+elif len(sys.argv) == 2:
     # Used to Remediate All Malware based on Full List
     GetAndParseData(unique_key)
+else:
+    # Non-predefined number of arguments
+    print("Unknown Argument Format!")
+    # Exit Program
+    exit(0)
