@@ -85,7 +85,7 @@ class GetAndParseData:
         # Get Decrypted JSON List
         json_list = GetAndParseData.aes_decrypt(encrypted_list)
         # Parse JSON Data for Rules
-        GetAndParseData.parse_json(json_list)
+        GetAndParseData.parse_json(json_list, self.operating_system)
 
     @staticmethod
     def save_to_file(list_encrypted):
@@ -107,10 +107,10 @@ class GetAndParseData:
                 # Set Failure Condition to 1
                 trial = 1
                 # Failure to Parse Correct Data
-                print("Error parsing file contents. Please try again.")
+                print("\nError parsing file contents. Please try again.")
         except:
             # Failure to Get Data
-            print("Error gathering file contents. Please try again.")
+            print("\nError gathering file contents. Please try again.")
             # Set Failure Condition to 1
             trial = 1
         finally:
@@ -122,9 +122,28 @@ class GetAndParseData:
         return remediation_list.content.decode("utf-8")[8:]
 
     @staticmethod
-    def parse_json(list_json):
+    def parse_json(list_json, operating_system):
         # Parses JSON to identify individual tasks and perform them.
-        return 0
+        try:
+            json_data = json.loads(list_json)
+            json_data_size = len(json_data)
+            print(str(json_data_size) + " Malware Signatures Found In Store to AutoRemediate")
+
+            for counter in range(json_data_size):
+                print("Attempting to Remediate " + json_data[counter]['name']['malware_name'])
+                if operating_system == "Windows":
+                    print("here")
+                elif operating_system == "Linux":
+                    print("here1")
+                elif operating_system == "Darwin":
+                    print("here2")
+                else:
+                   print("Error")
+
+        except:
+            print("Exception")
+        finally:
+            return 0
 
     @staticmethod
     def aes_decrypt(list_encrypted):
@@ -143,7 +162,10 @@ elif len(sys.argv) == 2:
     # Used to Remediate All Malware based on Full List
     GetAndParseData(unique_key)
 else:
+    #Test-Only
+    GetAndParseData(unique_key)
     # Non-predefined number of arguments
-    print("Unknown Argument Format!")
+    print("\nUnknown Argument Format!\n")
+    print("Usage - \npython3 AutoRemediate.py\npython AutoRemediate.py\npython3 AutoRemediate.py (Malware-Name)\npython AutoRemediate.py (Malware-Name)")
     # Exit Program
     exit(0)
