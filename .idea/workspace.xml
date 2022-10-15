@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ce0bd56-4489-4453-a471-c4c4bae4519d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/connectionStrings.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/initDatabases.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/AutoRemediate.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AutoRemediate.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/addClient.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/addClientKey.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/clientIndex.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/msspIndex.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AutoRemediate.py" beforeDir="false" afterPath="$PROJECT_DIR$/AutoRemediate.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
