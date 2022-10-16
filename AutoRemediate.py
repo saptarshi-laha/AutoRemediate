@@ -154,18 +154,4 @@ class GetAndParseData:
 
 
 unique_key = "client_key"
-
-if len(sys.argv) == 3:
-    # Used to Remediate a Specific Malware/Adware Variant
-    print(4)
-elif len(sys.argv) == 2:
-    # Used to Remediate All Malware based on Full List
-    GetAndParseData(unique_key)
-else:
-    #Test-Only
-    GetAndParseData(unique_key)
-    # Non-predefined number of arguments
-    print("\nUnknown Argument Format!\n")
-    print("Usage - \npython3 AutoRemediate.py\npython AutoRemediate.py\npython3 AutoRemediate.py (Malware-Name)\npython AutoRemediate.py (Malware-Name)")
-    # Exit Program
-    exit(0)
+GetAndParseData(unique_key)
