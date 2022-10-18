@@ -1,4 +1,5 @@
 #Files Added Here Will Be Ignored in Git Push
-venv/
-.idea/
-.DS_Store
+/venv/
+/.idea/
+/.DS_Store
+**/.DS_Store
