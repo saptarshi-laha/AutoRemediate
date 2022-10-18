@@ -1,0 +1,46 @@
+[{
+  "name": {
+    "malware_name": "SolarMarker - Windows",
+    "malware_OS": "Windows",
+    "malware_uniqueID": "SHA_HERE"
+  },
+  "key": "XYZ",
+  "service": "SOLR",
+  "file": "C:\\ProgramData\\test",
+  "hash_md5": "md5 here",
+  "hash_sha256": "sha_256 here",
+  "directory" : "C:\\test",
+  "yara": "rule-here",
+  "program": "SolarMarker",
+  "process": "Experimental"
+}, {
+  "name": {
+    "malware_name": "SolarMarker",
+    "malware_OS": "Windows",
+    "malware_uniqueID": "SHA_HERE"
+  },
+  "key": "XYZ",
+  "service": "SOLR",
+  "file": "C:\\ProgramData\\test",
+  "hash_md5": "md5 here",
+  "hash_sha256": "sha_256 here",
+  "directory" : "C:\\test",
+  "yara": "rule-here",
+  "program": "SolarMarker",
+  "process": "Experimental"
+}, {
+  "name": {
+    "malware_name": "SolarMarker",
+    "malware_OS": "Windows",
+    "malware_uniqueID": "SHA_HERE"
+  },
+  "key": "XYZ",
+  "service": "SOLR",
+  "file": "C:\\ProgramData\\test",
+  "hash_md5": "md5 here",
+  "hash_sha256": "sha_256 here",
+  "directory" : "C:\\test",
+  "yara": "rule-here",
+  "program": "SolarMarker",
+  "process": "Experimental"
+}]
