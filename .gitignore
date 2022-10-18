@@ -1,2 +1,3 @@
 #Files Added Here Will Be Ignored in Git Push
-**/connectionStrings.php
+venv
+.idea
