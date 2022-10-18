@@ -21,4 +21,4 @@ Currently working on implementing secure communication between Client-Server and
 
 
 ## Estimated Completion Date
-End of November 2022. This could however be delayed a lot of factors.
+End of November 2022. This could however be delayed by a lot of factors.

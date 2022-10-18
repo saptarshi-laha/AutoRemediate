@@ -1,6 +1,28 @@
 <?php
 
-include "connectionStrings.php";
+if(isset($_SERVER['REMOTE_ADDR']) && isset($_SERVER['HTTP_X_FORWARDED_FOR']) && isset($_SERVER['HTTP_CLIENT_IP'])) {
+    error_log("Remote Address Data - " . $_SERVER['REMOTE_ADDR'] . ". X-Forwarded Data - " . $_SERVER['HTTP_X_FORWARDED_FOR'] . ". HTTP IP Data - " . $_SERVER['HTTP_CLIENT_IP'] . ". (initDatabases.php)");
+}
+else if(isset($_SERVER['REMOTE_ADDR']) && isset($_SERVER['HTTP_X_FORWARDED_FOR'])){
+    error_log("Remote Address Data - " . $_SERVER['REMOTE_ADDR'] . ". X-Forwarded Data - " . $_SERVER['HTTP_X_FORWARDED_FOR'] . ". (initDatabases.php)");
+}
+else if(isset($_SERVER['HTTP_X_FORWARDED_FOR']) && isset($_SERVER['HTTP_CLIENT_IP'])){
+    error_log("X-Forwarded Data - " . $_SERVER['HTTP_X_FORWARDED_FOR'] . ". HTTP IP Data - " . $_SERVER['HTTP_CLIENT_IP'] . ". (initDatabases.php)");
+}
+else if(isset($_SERVER['REMOTE_ADDR']) && isset($_SERVER['HTTP_CLIENT_IP'])){
+    error_log("Remote Address Data - " . $_SERVER['REMOTE_ADDR'] . ". HTTP IP Data - " . $_SERVER['HTTP_CLIENT_IP'] . ". (initDatabases.php)");
+}
+else if(isset($_SERVER['REMOTE_ADDR'])){
+    error_log("Remote Address Data - " . $_SERVER['REMOTE_ADDR'] . ". (initDatabases.php)");
+}
+else if(isset($_SERVER['HTTP_X_FORWARDED_FOR'])){
+    error_log("X-Forwarded Data - " . $_SERVER['HTTP_X_FORWARDED_FOR'] . ". (initDatabases.php)");
+}
+else if(isset($_SERVER['HTTP_CLIENT_IP'])){
+    error_log("HTTP IP Data - " . $_SERVER['HTTP_CLIENT_IP'] . ". (initDatabases.php)");
+}
+
+include "../Shared/connectionStrings.php";
 
 try {
     $pdo = new PDO($mysql_connectionString_root, $mysql_username_root, $mysql_password_root);
