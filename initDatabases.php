@@ -45,5 +45,6 @@ try {
 
 } catch (PDOException $e) {
     error_log("PDOException ('$mysql_username_root') (initDatabases.php) ".$e->getMessage());
+    
     //Error HTML Here!
 }
