@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7ce0bd56-4489-4453-a471-c4c4bae4519d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSSP Frontend/checkMSSPCookie.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSSP Frontend/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/MSSP Frontend/msspRegister.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client Frontend/checkClientCookie.php" beforeDir="false" afterPath="$PROJECT_DIR$/MSSP Frontend/addDetection.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSSP Frontend/msspRegister.php" beforeDir="false" afterPath="$PROJECT_DIR$/MSSP Frontend/msspSignInRegister.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
