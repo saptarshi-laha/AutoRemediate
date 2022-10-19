@@ -1,5 +1,11 @@
 <?php
 
+$status = "Initialising Databases...";
+
+header("Cache-Control: no-cache, no-store, must-revalidate");
+header("Pragma: no-cache");
+header("Expires: 0");
+
 if(isset($_SERVER['REMOTE_ADDR']) && isset($_SERVER['HTTP_X_FORWARDED_FOR']) && isset($_SERVER['HTTP_CLIENT_IP'])) {
     error_log("Remote Address Data - " . $_SERVER['REMOTE_ADDR'] . ". X-Forwarded Data - " . $_SERVER['HTTP_X_FORWARDED_FOR'] . ". HTTP IP Data - " . $_SERVER['HTTP_CLIENT_IP'] . ". (initDatabases.php)");
 }
@@ -62,17 +68,60 @@ CREATE TABLE IF NOT EXISTS RSA_KEY(ID INT(255) AUTO_INCREMENT PRIMARY KEY NOT NU
 
         $pdo = null;
         error_log("PDO Connection Closed Successfully! ($mysql_username_user) (initDatabases.php)");
-
         }
         catch (PDOException $e){
             error_log("PDOException ($mysql_username_user) (initDatabases.php) ".$e->getMessage());
+
+            $status = "Error Setting Up Databases!";
         }
 
-    //Success HTML Here
-
+    $status = "Databases Have Been Initialised Successfully!";
 
 } catch (PDOException $e) {
     error_log("PDOException ('$mysql_username_root') (initDatabases.php) ".$e->getMessage());
-
-    //Error HTML Here!
+    $status = "Error Setting Up Databases!";
 }
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache" />
+	<title>Initialise Databases</title>
+	<meta name="description" content="Website used to initialise/re-initialise AutoRemediate databases.">
+	<link rel="icon" type="image/png" href="../HTMLData/assets/img/favicon.png" />
+	<link rel="shortcut icon" type="image/png" href="../HTMLData/assets/img/favicon.png" />
+	<link rel="stylesheet" href="../HTMLData/assets/bootstrap/css/bootstrap.min.css">
+	<style>
+		html, body {
+    		height: 100%;
+					}
+		.main {
+		    height: 100%;
+		    width: 100%;
+		    display: table;
+			  }
+		.wrapper {
+		    display: table-cell;
+		    height: 100%;
+		    vertical-align: middle;
+				  }
+	</style>
+</head>
+<body style="background: var(--bs-black);">
+	<div class="main">
+		<div class="wrapper">
+			<h1 id="heading" style="color: rgb(255,255,255);text-align: center; vertical-align: center;"><?php echo $status ?></h1>
+</div>
+</div>
+<script src="../HTMLData/assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
+
