@@ -52,7 +52,13 @@ try {
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         error_log("PDO Connection Successful ($mysql_username_user) (initDatabases.php)");
 
-        //Insert Table Information Here
+        $sql = "CREATE TABLE IF NOT EXISTS MSSP_Users(ID INT(255) AUTO_INCREMENT PRIMARY KEY NOT NULL, Email VARCHAR(256) NOT NULL UNIQUE, Password VARCHAR(1000) NOT NULL, Role INT(1) NOT NULL DEFAULT 1);
+CREATE TABLE IF NOT EXISTS Client_List(ID INT(255) AUTO_INCREMENT PRIMARY KEY NOT NULL, ClientID VARCHAR(10) NOT NULL UNIQUE, ClientName VARCHAR(500) NOT NULL);
+CREATE TABLE IF NOT EXISTS Client_Users(ID INT(255) AUTO_INCREMENT PRIMARY KEY NOT NULL, ClientID VARCHAR(10) NOT NULL UNIQUE, Email VARCHAR(256) NOT NULL UNIQUE, Password VARCHAR(1000) NOT NULL);
+CREATE TABLE IF NOT EXISTS AES_KEY(ID INT(255) AUTO_INCREMENT PRIMARY KEY NOT NULL, ClientID VARCHAR(10) NOT NULL UNIQUE, Email VARCHAR(256) NOT NULL UNIQUE, AES VARCHAR(1024) NOT NULL);
+CREATE TABLE IF NOT EXISTS RSA_KEY(ID INT(255) AUTO_INCREMENT PRIMARY KEY NOT NULL, ClientID VARCHAR(10) NOT NULL UNIQUE, Email VARCHAR(256) NOT NULL UNIQUE, Public VARCHAR(1024) NOT NULL, Private VARCHAR(1024) NOT NULL);";
+        $pdo->exec($sql);
+        error_log("Created Tables & Default User Entry ($mysql_username_user) (initDatabases.php)");
 
         $pdo = null;
         error_log("PDO Connection Closed Successfully! ($mysql_username_user) (initDatabases.php)");

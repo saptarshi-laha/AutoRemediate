@@ -32,6 +32,11 @@
     "WebServerToolWindowFactoryState": "false",
     "settings.editor.selected.configurable": "web.server",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
 }]]></component>
   <component name="RunManager" selected="PHP Script.connectionStrings.php">
