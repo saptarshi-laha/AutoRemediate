@@ -101,7 +101,7 @@ class GetAndParseData:
             # Retrieves OS specific general remediation JSON.
             remediation_list = requests.get("http://localhost:8888/getSystemList.php", params={"platform": operating_system})
             # Try Parsing Correct Data
-            correct_content = remediation_list.content.decode("utf-8").startswith("eSentire")
+            correct_content = remediation_list.content.decode("utf-8").startswith("msspName")
             # Remediation List doesn't Start with eSentire
             if correct_content is False:
                 # Set Failure Condition to 1

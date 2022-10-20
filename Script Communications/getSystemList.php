@@ -7,7 +7,7 @@
             $filename = "dataw.json";
             if(file_exists($filename)){
                 $fileContent = file_get_contents($filename);
-                $fileContent =  "eSentire\n".base64_encode($fileContent);
+                $fileContent =  "msspName\n".base64_encode($fileContent);
                 echo $fileContent;
                 exit;
             }
@@ -19,7 +19,7 @@
             $filename = "datal.json";
             if(file_exists($filename)){
                 $fileContent = file_get_contents($filename);
-                $fileContent =  "eSentire\n".base64_encode($fileContent);
+                $fileContent =  "msspName\n".base64_encode($fileContent);
                 echo $fileContent;
                 exit;
             }
@@ -31,7 +31,7 @@
             $filename = "datad.json";
             if(file_exists($filename)){
                 $fileContent = file_get_contents($filename);
-                $fileContent =  "eSentire\n".base64_encode($fileContent);
+                $fileContent =  "msspName\n".base64_encode($fileContent);
                 echo $fileContent;
                 exit;
             }
