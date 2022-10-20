@@ -1,7 +1,5 @@
 <?php
 
-$status = "Initialising Databases...";
-
 header("Cache-Control: no-cache, no-store, must-revalidate");
 header("Pragma: no-cache");
 header("Expires: 0");
@@ -27,6 +25,8 @@ else if(isset($_SERVER['HTTP_X_FORWARDED_FOR'])){
 else if(isset($_SERVER['HTTP_CLIENT_IP'])){
     error_log("HTTP IP Data - " . $_SERVER['HTTP_CLIENT_IP'] . ". (initDatabases.php)");
 }
+
+$status = "Initialising Databases..."; // Never Used.
 
 include "../Shared/connectionStrings.php";
 

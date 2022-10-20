@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ce0bd56-4489-4453-a471-c4c4bae4519d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/MSSP Frontend/msspRegister.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSSP Frontend/msspSignInRegister.php" beforeDir="false" afterPath="$PROJECT_DIR$/MSSP Frontend/msspSignIn.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InitializeDatabases/initDatabases.php" beforeDir="false" afterPath="$PROJECT_DIR$/InitializeDatabases/initDatabases.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
