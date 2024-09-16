@@ -21,4 +21,4 @@ Currently working on implementing secure communication between Client-Server and
 
 
 ## Estimated Completion Date
-End of November 2022. This could however be delayed by a lot of factors.
+This project is on hold until further notice.
